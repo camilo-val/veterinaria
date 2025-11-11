@@ -21,7 +21,16 @@ public class UserAdapter implements UserGateway {
     public Optional<User> save(User user) {
 
         return Optional.ofNullable(this.userRepository.save(userMapper.toEntity(user)))
-                .map(userMapper::toDomain);
+                .map(u -> {
+                    System.out.println("NEW USER ADAPTER: " + u);
+                    return u;
+
+                })
+                .map(userMapper::toDomain)
+                .map(r ->{
+                            System.out.println("NEW USER ADAPTER Mapper: " + r);
+                            return r;
+                        });
     }
 
     @Override

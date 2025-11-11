@@ -19,9 +19,9 @@ public class RouterRest {
     public RouterFunction<ServerResponse> ruoter(Handler handler){
         return RouterFunctions.route(RequestPredicates.POST(this.BASE),handler::create)
                 .andRoute(RequestPredicates.GET(BASE+"/{id}"),handler::findById)
-                .andRoute(RequestPredicates.GET(BASE+"/username/{username}"),handler::findByEmail);
-                //.andRoute(RequestPredicates.PUT(BASE+"/{id}"),handler::update)
-                //.andRoute(RequestPredicates.PUT(BASE+"/{id}"),handler::delete)
+                .andRoute(RequestPredicates.GET(BASE+"/email/{email}"),handler::findByEmail)
+                .andRoute(RequestPredicates.PUT(BASE+"/{id}"),handler::update)
+                .andRoute(RequestPredicates.PUT(BASE+"/{id}"),handler::delete);
                 //.filter(exceptionHandler);
     }
 }

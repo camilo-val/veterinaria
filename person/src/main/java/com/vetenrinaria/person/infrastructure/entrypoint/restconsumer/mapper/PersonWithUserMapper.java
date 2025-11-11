@@ -28,7 +28,7 @@ public interface PersonWithUserMapper {
 
     @ObjectFactory
     default PersonWithUser create(PersonRequest request, UserDtoMapper userMapper) {
-        Person person = Person.fromPersistence(
+        Person person = Person.newPerson(
                 request.getId(),
                 request.getName(),
                 request.getEmail(),

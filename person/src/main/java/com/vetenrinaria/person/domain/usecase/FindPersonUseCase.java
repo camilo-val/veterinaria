@@ -26,7 +26,12 @@ public class FindPersonUseCase {
     public Optional<PersonWithUser> findById(Long id) {
         return this.personGateway.findById(id)
                 .flatMap(person -> userGateway.findById(person.getUserId())
-                        .map(user -> new PersonWithUser(person, user)))
+                        .map(user -> {
+                            System.out.println("Find person: " + person.toString());
+                            System.out.println("Find user: " + user.toString());
+                                return  new PersonWithUser(person, user);
+                            }
+                        ))
                 .or(() -> {
                     throw new  BusinessExceptions(BusinessMessageExceptions.PERSON_NOT_EXIST);
                 });

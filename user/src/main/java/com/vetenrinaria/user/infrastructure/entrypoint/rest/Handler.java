@@ -1,5 +1,6 @@
 package com.vetenrinaria.user.infrastructure.entrypoint.rest;
 
+import com.vetenrinaria.user.domain.model.User;
 import com.vetenrinaria.user.domain.usecase.DeleteUser;
 import com.vetenrinaria.user.domain.usecase.FindUser;
 import com.vetenrinaria.user.domain.usecase.SaveUser;
@@ -37,7 +38,10 @@ public class Handler {
 
     public ServerResponse create(ServerRequest request) throws ServletException, IOException {
         UserRequest body = request.body(UserRequest.class);
-        UserResponse response = userDtoMapper.toResponse(this.saveUser.createUser(userDtoMapper.toDomain(body)).get());
+        User u =  this.saveUser.createUser(userDtoMapper.toDomain(body)).get();
+        System.out.println("Resultado de la persistencai de datos antes del mapper: " + u);
+        UserResponse response = userDtoMapper.toResponse(u);
+        System.out.println("Resultado de la persistencai de datos después del mapper: " + response);
         return ServerResponse.status(HttpStatus.CREATED).body(response);
 
     }

@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -13,6 +14,7 @@ import java.util.Date;
 @Data
 @Builder(toBuilder = true)
 @Entity(name = "user")
+@ToString
 public class UserEntity {
 
     @Id
@@ -22,6 +24,6 @@ public class UserEntity {
     private String password;
     private String role;
     private Boolean status;
-    private Date createAt;
-    private Date updateAt;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updateAt;
 }

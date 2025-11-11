@@ -2,6 +2,7 @@ package com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.dto;
 
 import lombok.*;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Builder(toBuilder = true)
@@ -15,6 +16,6 @@ public class UserRequest {
     private String password;
     private String role;
     private Boolean status;
-    private Date createdAt;
-    private Date updateAt;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updateAt;
 }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vetenrinaria.user.domain.model.Role;
 import lombok.*;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Builder(toBuilder = true)
 @Getter
@@ -19,6 +19,6 @@ public class UserResponse {
     private String password;
     private Role role;
     private Boolean status;
-    private Date createAt;
-    private Date updateAt;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updateAt;
 }

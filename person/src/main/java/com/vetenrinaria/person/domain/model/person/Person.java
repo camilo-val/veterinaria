@@ -3,8 +3,10 @@ package com.vetenrinaria.person.domain.model.person;
 import com.vetenrinaria.person.domain.model.exceptions.BusinessExceptions;
 import com.vetenrinaria.person.domain.model.exceptions.BusinessMessageExceptions;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class Person {
     private final Long id;
     private final String name;
@@ -26,10 +28,6 @@ public class Person {
         if(name == null || email == null || phone == null || address == null){
             throw new BusinessExceptions(BusinessMessageExceptions.PERSON_INVALID);
         }
-        return new Person(id, name, email, phone, address, userId);
-    }
-
-    public static Person fromPersistence(Long id, String name, String email, String phone, String address, Long userId) {
         return new Person(id, name, email, phone, address, userId);
     }
 

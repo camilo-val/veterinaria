@@ -14,7 +14,12 @@ public class FindUser {
     private final UserGateway userGateway;
 
     public Optional<User> findById(Long id) {
-        return this.userGateway.findById(id).or(() -> {throw new BusinessExceptions(BusinessMessageExceptions.USER_NOT_EXIST);});
+        return this.userGateway.findById(id)
+                .map(u -> {
+                    System.out.println("USER: " +u);
+                    return u;
+                })
+                .or(() -> {throw new BusinessExceptions(BusinessMessageExceptions.USER_NOT_EXIST);});
     }
 
     public Optional<User> findByUsername(String username) {

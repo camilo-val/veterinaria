@@ -3,6 +3,7 @@ package com.vetenrinaria.person.domain.model.user;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Getter
@@ -13,10 +14,10 @@ public class User {
     private final String password;
     private final String role;
     private final Boolean status;
-    private final Date createdAt;
-    private final Date updateAt;
+    private final OffsetDateTime createdAt;
+    private final OffsetDateTime updateAt;
 
-    public User(Long id, String username, String password, String role, Boolean status, Date createdAt, Date updateAt) {
+    public User(Long id, String username, String password, String role, Boolean status, OffsetDateTime createdAt, OffsetDateTime updateAt) {
         this.id = id;
         this.username = username;
         this.password = password;

@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Builder(toBuilder = true)
@@ -19,6 +20,6 @@ public class UserResponse {
     private String password;
     private String role;
     private Boolean status;
-    private Date createAt;
-    private Date updateAt;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updateAt;
 }

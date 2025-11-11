@@ -3,10 +3,12 @@ package com.vetenrinaria.person.infrastructure.adapter.restconsumer.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Builder(toBuilder = true)
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -17,6 +19,6 @@ public class UserResponse {
     private String password;
     private String role;
     private Boolean status;
-    private Date createdAt;
-    private Date updateAt;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updateAt;
 }

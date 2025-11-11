@@ -3,7 +3,7 @@ spring:
     name: person
   datasource:
     url: jdbc:mysql://mysql-barberia.alwaysdata.net:3306/barberia_veterinaria?useSSL=false&serverTimezone=UTC
-    username: barberia
+    username: barberia_aux
     password: Ccva1007*
     driver-class-name: com.mysql.cj.jdbc.Driver
 

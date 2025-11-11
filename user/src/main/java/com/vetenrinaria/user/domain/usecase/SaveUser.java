@@ -7,6 +7,7 @@ import com.vetenrinaria.user.domain.model.gateway.UserGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.Optional;
 
@@ -21,8 +22,11 @@ public class SaveUser {
                 throw new BusinessExceptions(BusinessMessageExceptions.USER_INVALID);
 
         User newUser = User.createUser(user.getId(),user.getUsername(),
-                user.getPassword(),user.getRole(), true, new Date(), null);
-        return this.userGateway.save(newUser);
+                user.getPassword(),user.getRole(), true, OffsetDateTime.now(), null);
+        System.out.println("NEW USER: " + newUser);
+        Optional<User> r = this.userGateway.save(newUser);
+        System.out.println("NEW USER BEFORE ADAPTER: " + r.orElseThrow(() -> new RuntimeException("Perdi la data")));
+        return r;
     }
 
     public Optional<User> updateUser(Long id,User user){
@@ -34,7 +38,7 @@ public class SaveUser {
             }
         }
         User newUser = User.createUser(id,user.getUsername(),
-                user.getPassword(),user.getRole(), true, userBd.get().getCreateAt(), new Date());
+                user.getPassword(),user.getRole(), true, userBd.get().getCreatedAt(), OffsetDateTime.now());
         System.out.println("USER UPDATE: " +  newUser);
         return this.userGateway.save(newUser);
     }
