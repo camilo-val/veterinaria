@@ -24,13 +24,13 @@ public class Handler {
     private final DeleteUser deleteUser;
     private final UserDtoMapper userDtoMapper;
 
-    public ServerResponse findById(ServerRequest request) throws ServletException, IOException {
+    public ServerResponse findById(ServerRequest request){
         return this.findUser.findById(Long.valueOf(request.pathVariable("id")))
                 .map(userDtoMapper::toResponse)
                 .map(ServerResponse.ok()::body).get();
     }
 
-    public ServerResponse findByUsername(ServerRequest request) throws ServletException, IOException {
+    public ServerResponse findByUsername(ServerRequest request){
         return this.findUser.findByUsername(request.pathVariable("username"))
                 .map(userDtoMapper::toResponse)
                 .map(ServerResponse.ok()::body).get();
@@ -51,12 +51,7 @@ public class Handler {
         Long id = Long.valueOf(request.pathVariable("id"));
         return this.saveUser.updateUser(id,
                         userDtoMapper.toDomain(body))
-                .map(r -> {
-                    System.out.println("ENTREE: " +r.toString());
-                    UserResponse response = userDtoMapper.toResponse(r);
-                    System.out.println("ENTREE: " +response.toString());
-                    return userDtoMapper.toResponse(r);
-                })//userDtoMapper::toResponse)
+                .map(userDtoMapper::toResponse)
                 .map(ServerResponse.ok()::body).get();
     }
 
