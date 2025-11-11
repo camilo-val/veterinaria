@@ -3,11 +3,13 @@ package com.vetenrinaria.user.domain.model;
 import com.vetenrinaria.user.domain.model.exceptions.BusinessExceptions;
 import com.vetenrinaria.user.domain.model.exceptions.BusinessMessageExceptions;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.Date;
 import java.util.Objects;
 
 @Getter
+@ToString
 public class User {
     private final Long id;
     private final String username;
@@ -28,10 +30,10 @@ public class User {
     }
 
 
-    public static User createUser(Long id, String username, String password, Role role){
+    public static User createUser(Long id, String username, String password, Role role, Boolean status, Date createAt, Date updateAt){
         if (username == null || username.isBlank() || password.isBlank() || password == null){
             throw new BusinessExceptions(BusinessMessageExceptions.USER_INVALID);
         }
-        return new User(id, username,password,role,Boolean.TRUE, new Date(), null);
+        return new User(id, username,password,role, status, createAt, updateAt);
     }
 }

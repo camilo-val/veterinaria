@@ -1,9 +1,10 @@
 package com.vetenrinaria.user.infrastructure.drivenadapter.entity;
 
-//import jakarta.persistence.GeneratedValue;
-//import jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
-//import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
@@ -11,10 +12,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @Builder(toBuilder = true)
+@Entity(name = "user")
 public class UserEntity {
 
-   // @Id
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;

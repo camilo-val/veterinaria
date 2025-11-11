@@ -8,5 +8,5 @@ public interface UserGateway {
     Optional<User> save(User user);
     Optional<User> findById(Long id);
     Optional<User> findByUsername(String username);
-    void deleteByUsername(Long id);
+    void deleteByUsername(String username);
 }

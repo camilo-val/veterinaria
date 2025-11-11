@@ -18,6 +18,10 @@ public class RouterRest {
     @Bean
     public RouterFunction<ServerResponse> ruoter(Handler handler){
         return RouterFunctions.route(RequestPredicates.POST(this.BASE),handler::create)
+                .andRoute(RequestPredicates.GET(BASE+"/{id}"),handler::findById)
+                .andRoute(RequestPredicates.GET(BASE+"/username/{username}"),handler::findByUsername)
+                .andRoute(RequestPredicates.PUT(BASE+"/{id}"),handler::update)
+                .andRoute(RequestPredicates.DELETE(BASE+"/{username}"),handler::delete)
                 .filter(exceptionHandler);
     }
 }

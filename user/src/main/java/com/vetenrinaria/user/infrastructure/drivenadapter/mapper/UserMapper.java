@@ -30,7 +30,10 @@ public interface UserMapper {
                 entity.getId(),
                 entity.getUsername(),
                 entity.getPassword(),
-                Role.valueOf(entity.getRole())
+                Role.valueOf(entity.getRole()),
+                entity.getStatus(),
+                entity.getCreateAt(),
+                entity.getUpdateAt()
         );
     }
 }

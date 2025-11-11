@@ -1,9 +1,9 @@
 spring:
   application:
     name: discovery-server
-
+server:
+  port: 8761
 eureka:
-  instance:
-    instance-id: ${spring.application.name}:${random.uuid}
   client:
     register-with-eureka: false
+    fetch-registry: false
