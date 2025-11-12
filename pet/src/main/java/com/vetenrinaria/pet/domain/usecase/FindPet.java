@@ -27,4 +27,8 @@ public class FindPet {
     public List<Pet> findByUserId(Long userId) {
         return this.petGateway.findByUserId(userId);
     }
+
+    public List<Pet> findAll() {
+        return this.petGateway.findAll();
+    }
 }

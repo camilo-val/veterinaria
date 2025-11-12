@@ -26,16 +26,27 @@ public class PetUseCase {
     }
 
     public Optional<Pet> save(Pet pet) {
-        List<Pet> findByName = petGateway
-                .findByName(pet.getName());
-        return this.petGateway.findByUserId(pet.getPersonId())
-                .stream().filter(petById -> findByName.stream().anyMatch(pet1 -> pet1.getName().equals(pet.getName())))
-                .findAny().flatMap(petExist -> {
-                    if (petExist.getPersonId() != null) {
-                        throw new BusinessExceptions(BusinessMessageExceptions.PET_EXIST);
-                    }
-                    Pet newPet = Pet.createPet(pet.getId(), pet.getName(), pet.getAge(),  pet.getSpecie(), pet.getRace(), pet.getPersonId());
-                    return petGateway.save(newPet);
-        });
+        List<Pet> petsByName = petGateway.findByName(pet.getName());
+        List<Pet> petsByPerson = petGateway.findByUserId(pet.getPersonId());
+
+        boolean exists = petsByPerson.stream()
+                .anyMatch(existingPet -> petsByName.stream()
+                        .anyMatch(p -> p.getName().equals(existingPet.getName())));
+
+        if (exists) {
+            throw new BusinessExceptions(BusinessMessageExceptions.PET_EXIST);
+        }
+
+        Pet newPet = Pet.createPet(
+                pet.getId(),
+                pet.getName(),
+                pet.getAge(),
+                pet.getSpecie(),
+                pet.getRace(),
+                pet.getPersonId()
+        );
+
+        return petGateway.save(newPet);
     }
+
 }

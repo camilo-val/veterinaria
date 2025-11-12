@@ -10,5 +10,6 @@ public interface PetGateway {
     Optional<Pet> save(Pet pet);
     List<Pet> findByName(String pet);
     List<Pet> findByUserId(Long userId);
+    List<Pet> findAll();
     void deleteById(Long id);
 }

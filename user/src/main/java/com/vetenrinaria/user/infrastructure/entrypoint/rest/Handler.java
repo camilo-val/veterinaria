@@ -4,6 +4,7 @@ import com.vetenrinaria.user.domain.model.User;
 import com.vetenrinaria.user.domain.usecase.DeleteUser;
 import com.vetenrinaria.user.domain.usecase.FindUser;
 import com.vetenrinaria.user.domain.usecase.SaveUser;
+import com.vetenrinaria.user.infrastructure.drivenadapter.mapper.UserMapper;
 import com.vetenrinaria.user.infrastructure.entrypoint.dto.UserRequest;
 import com.vetenrinaria.user.infrastructure.entrypoint.dto.UserResponse;
 import com.vetenrinaria.user.infrastructure.entrypoint.mapper.UserDtoMapper;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -34,6 +36,11 @@ public class Handler {
         return this.findUser.findByUsername(request.pathVariable("username"))
                 .map(userDtoMapper::toResponse)
                 .map(ServerResponse.ok()::body).get();
+    }
+
+    public ServerResponse findAll(ServerRequest request){
+        List<UserResponse> responses = this.findUser.findAll().stream().map(userDtoMapper::toResponse).toList();
+        return ServerResponse.ok().body(responses);
     }
 
     public ServerResponse create(ServerRequest request) throws ServletException, IOException {

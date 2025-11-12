@@ -4,9 +4,11 @@ import com.vetenrinaria.person.domain.model.exceptions.BusinessExceptions;
 import com.vetenrinaria.person.domain.model.exceptions.BusinessMessageExceptions;
 import com.vetenrinaria.person.domain.model.gateway.PersonGateway;
 import com.vetenrinaria.person.domain.model.gateway.UserGateway;
+import com.vetenrinaria.person.domain.model.person.Person;
 import com.vetenrinaria.person.domain.model.person.PersonWithUser;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -35,5 +37,10 @@ public class FindPersonUseCase {
                 .or(() -> {
                     throw new  BusinessExceptions(BusinessMessageExceptions.PERSON_NOT_EXIST);
                 });
+    }
+    public List<PersonWithUser> findAll() {
+        return this.personGateway.findAll().stream().map(person -> new PersonWithUser(person
+                , this.userGateway.findById(person.getUserId()).get()))
+                .toList();
     }
 }

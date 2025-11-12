@@ -7,7 +7,9 @@ import com.vetenrinaria.person.infrastructure.adapter.mysql.mapper.PersonMapperA
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Component
 @RequiredArgsConstructor
@@ -32,6 +34,13 @@ public class PersonAdapter implements PersonGateway {
     public Optional<Person> findByEmail(String email) {
         return this.personData.findByEmail(email)
                 .map(personMapperAdapter::toDomain);
+    }
+
+    @Override
+    public List<Person> findAll() {
+        return StreamSupport.stream(this.personData.findAll().spliterator(),false)
+                .map(personMapperAdapter::toDomain)
+                .toList();
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 
 public interface PetData extends CrudRepository<PetEntity, Long> {
-    Iterator<PetEntity> findByUserId(Long userId);
-    Iterator<PetEntity> findByName(String pet);
+    Iterable<PetEntity> findByPersonId(Long personId);
+    Iterable<PetEntity> findByName(String pet);
     void deleteById(Long id);
 }

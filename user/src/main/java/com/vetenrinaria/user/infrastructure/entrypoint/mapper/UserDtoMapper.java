@@ -4,7 +4,6 @@ import com.vetenrinaria.user.domain.model.User;
 import com.vetenrinaria.user.infrastructure.entrypoint.dto.UserRequest;
 import com.vetenrinaria.user.infrastructure.entrypoint.dto.UserResponse;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ObjectFactory;
 
 @Mapper(componentModel = "spring")

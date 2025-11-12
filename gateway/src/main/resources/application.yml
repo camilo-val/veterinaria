@@ -1,0 +1,53 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true                # 🔍 Activa resolución automática con Eureka
+          lower-case-service-id: false # Usa nombres tal como aparecen en Eureka (USER, PERSON, PET)
+      routes:
+
+        # === USER SERVICE ===
+        - id: user-service
+          uri: lb://USER               # Usa el nombre registrado en Eureka
+          predicates:
+            - Path=/gateway-service/api/user-service/**
+          filters:
+            - StripPrefix=1             # Elimina "/gateway-service" → deja "/api/user-service"
+
+        # === PERSON SERVICE ===
+        - id: person-service
+          uri: lb://PERSON
+          predicates:
+            - Path=/gateway-service/api/person-service/**
+          filters:
+            - StripPrefix=1
+
+        # === PET SERVICE ===
+        - id: pet-service
+          uri: lb://PET
+          predicates:
+            - Path=/gateway-service/api/pet-service/**
+          filters:
+            - StripPrefix=1
+
+eureka:
+  client:
+    register-with-eureka: true          # Se registra en Eureka
+    fetch-registry: true                # Obtiene listado de servicios
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.uuid}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG  # 🧩 Muestra en consola las rutas cargadas
+    reactor.netty.http.client: DEBUG          # (opcional) log del tráfico HTTP

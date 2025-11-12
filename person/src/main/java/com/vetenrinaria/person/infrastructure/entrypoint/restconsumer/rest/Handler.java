@@ -1,10 +1,11 @@
 package com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.rest;
 
+import com.vetenrinaria.person.domain.model.person.PersonWithUser;
 import com.vetenrinaria.person.domain.usecase.DeletePerson;
 import com.vetenrinaria.person.domain.usecase.FindPersonUseCase;
 import com.vetenrinaria.person.domain.usecase.PersonUseCase;
 import com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.dto.PersonRequest;
-import com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.dto.UserRequest;
+import com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.dto.PersonResponse;
 import com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.mapper.PersonDtoMapper;
 import com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.mapper.PersonWithUserMapper;
 import com.vetenrinaria.person.infrastructure.entrypoint.restconsumer.mapper.UserEntryDtoMapper;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -38,7 +40,10 @@ public class Handler {
                 .map(personWithUserMapper::toResponse)
                 .map(ServerResponse.ok()::body).get();
     }
-
+    public ServerResponse findAll(ServerRequest request) {
+        List<PersonResponse> person = this.findPersonUseCase.findAll().stream().map(personWithUserMapper::toResponse).toList();
+        return ServerResponse.ok().body((person));
+    }
     public ServerResponse create(ServerRequest request) throws ServletException, IOException {
         PersonRequest personRequest = request.body(PersonRequest.class);
         System.out.printf("PersonRequest: %s%n", personRequest.toString());

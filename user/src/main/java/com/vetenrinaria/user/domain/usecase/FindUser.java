@@ -6,6 +6,7 @@ import com.vetenrinaria.user.domain.model.exceptions.BusinessMessageExceptions;
 import com.vetenrinaria.user.domain.model.gateway.UserGateway;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -24,5 +25,9 @@ public class FindUser {
 
     public Optional<User> findByUsername(String username) {
         return this.userGateway.findByUsername(username).or(() -> {throw new BusinessExceptions(BusinessMessageExceptions.USER_NOT_EXIST);});
+    }
+
+    public List<User> findAll() {
+        return this.userGateway.findAll();
     }
 }

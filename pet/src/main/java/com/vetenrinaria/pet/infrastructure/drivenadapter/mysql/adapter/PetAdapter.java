@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Component
 @RequiredArgsConstructor
@@ -31,14 +32,23 @@ public class PetAdapter implements PetGateway {
 
     @Override
     public List<Pet> findByName(String pet) {
-        //noinspection unchecked
-        return Collections.unmodifiableList((List<Pet>) this.petData.findByName(pet));
+        return StreamSupport.stream(this.petData.findByName(pet).spliterator(),false)
+                .map(petAdapterMapper::toDomain)
+                .toList();
     }
 
     @Override
     public List<Pet> findByUserId(Long userId) {
-        //noinspection unchecked
-        return Collections.unmodifiableList((List<Pet>) this.petData.findByUserId(userId));
+        return StreamSupport.stream(this.petData.findByPersonId(userId).spliterator(), false)
+                .map(petAdapterMapper::toDomain)
+                .toList();
+    }
+
+    @Override
+    public List<Pet> findAll() {
+        return StreamSupport.stream(this.petData.findAll().spliterator(), false)
+                .map(petAdapterMapper::toDomain)
+                .toList();
     }
 
     @Override
