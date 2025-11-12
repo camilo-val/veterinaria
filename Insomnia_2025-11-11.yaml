@@ -1,0 +1,622 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1752866751152
+  modified: 1752866751152
+  description: ""
+collection:
+  - name: reactive
+    meta:
+      id: fld_761488807a4a4538b50beaa7b8effe39
+      created: 1753808057480
+      modified: 1761167572276
+      sortKey: -1753808057481
+      description: ""
+    children:
+      - name: user
+        meta:
+          id: fld_ccee328551e24cacb2431b61d7d62a88
+          created: 1760117267809
+          modified: 1760117284422
+          sortKey: -1760117267809
+          description: ""
+      - name: client
+        meta:
+          id: fld_07746966a53d45728edf66c184e4bcd9
+          created: 1760714894030
+          modified: 1761581493567
+          sortKey: -1760117267909
+          description: ""
+      - name: employed
+        meta:
+          id: fld_592dee0e678d4547a7b5f9261915c4f2
+          created: 1761233551858
+          modified: 1761233551858
+          sortKey: -1760117267859
+          description: ""
+      - name: product
+        meta:
+          id: fld_dd89fde3d316460c80bc5f4b15d474b6
+          created: 1761581472928
+          modified: 1761581497201
+          sortKey: -1761581472928
+          description: ""
+        children:
+          - name: category
+            meta:
+              id: fld_61d97136188e46b1a8fd0c96e22ffe86
+              created: 1761581604502
+              modified: 1761581604502
+              sortKey: -1761581604502
+              description: ""
+  - name: Barber
+    meta:
+      id: fld_9f635fc9397c47bbaa18d061be17a1b6
+      created: 1754493426038
+      modified: 1762534577556
+      sortKey: -1754493426038
+      description: ""
+    children:
+      - name: gateway
+        meta:
+          id: fld_e87b084b501e4d489d8248d13a4c0878
+          created: 1754920502186
+          modified: 1754920923292
+          sortKey: -1754920790843.75
+          description: ""
+        children:
+          - name: product-category
+            meta:
+              id: fld_7e7973ae2533470795c3aa47c8c72c7b
+              created: 1754920514473
+              modified: 1754920523939
+              sortKey: -1754920517715
+              description: ""
+          - name: product
+            meta:
+              id: fld_5ea1d49530d24aeda32963693776659b
+              created: 1754920897713
+              modified: 1754920932331
+              sortKey: -1754920517815
+              description: ""
+          - name: client
+            meta:
+              id: fld_a61618c6327d4590bfb5e3e95227eeac
+              created: 1755110851504
+              modified: 1755110863861
+              sortKey: -1754920517915
+              description: ""
+          - name: employ
+            meta:
+              id: fld_634436d345fb4467860ff5b297ba59d0
+              created: 1755120996355
+              modified: 1755120996355
+              sortKey: -1754920517865
+              description: ""
+      - name: microservicio
+        meta:
+          id: fld_27becc470e83422488324197be2c7fcf
+          created: 1754920887063
+          modified: 1754920887063
+          sortKey: -1754920887063
+          description: ""
+        children:
+          - name: product
+            meta:
+              id: fld_b7b54ab65423496aa5d02f570c4891bb
+              created: 1754494819233
+              modified: 1762273575553
+              sortKey: -1754920921659
+              description: ""
+          - name: product-category
+            meta:
+              id: fld_932025f9da43433a96b7932af2e7ba0f
+              created: 1754500824989
+              modified: 1754920928599
+              sortKey: -1754920921759
+              description: ""
+          - name: user
+            meta:
+              id: fld_6111badc5c0a4dc682de767a81ef3c1e
+              created: 1754948653308
+              modified: 1761852171492
+              sortKey: -1754948653308
+              description: ""
+          - name: client
+            meta:
+              id: fld_0dc3c222a54a4459a9f5efbcb3a63d9f
+              created: 1755104551753
+              modified: 1757345863016
+              sortKey: -1754934787533.5
+              description: ""
+          - name: employ
+            meta:
+              id: fld_dbf4134c8c414ef6bb58cc342ac0fa1d
+              created: 1755121026857
+              modified: 1755209559968
+              sortKey: -1754927854646.25
+              description: ""
+          - name: transaction
+            meta:
+              id: fld_f2352fa56d0841c7ab6dd4ded59d771c
+              created: 1761842076440
+              modified: 1761842076440
+              sortKey: -1761842076440
+              description: ""
+  - name: Veterinaria
+    meta:
+      id: fld_ed82194db6ca4cf5a1391eea1c98f48c
+      created: 1762869618665
+      modified: 1762869618665
+      sortKey: -1762869618665
+      description: ""
+    children:
+      - name: user
+        meta:
+          id: fld_9e017dd03bd94a44bfc89486d329b8c4
+          created: 1762869629125
+          modified: 1762870744258
+          sortKey: -1762869629125
+          description: ""
+        children:
+          - url: "{{ _.url }}:57033/api/user-service/2"
+            name: find by id
+            meta:
+              id: req_58ec402983e04b6899ca9ccc24811811
+              created: 1762870747364
+              modified: 1762885576745
+              isPrivate: false
+              description: ""
+              sortKey: -1762870747364
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:61544/api/user-service"
+            name: create user
+            meta:
+              id: req_90264e3233cb47bdbacdf20c4bc22e3d
+              created: 1762872329775
+              modified: 1762877133808
+              isPrivate: false
+              description: ""
+              sortKey: -1762872329775
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"username": "cvargas7",
+                	"password": "claveSegura2025",
+                	"role": "ROOT",
+                	"status": true,
+                	"createdAt": "2025-11-10T08:00:00Z",
+                	"updateAt": "2025-11-11T09:00:00Z"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: person
+        meta:
+          id: fld_4259b3c10c4740bbac354078e97ffe94
+          created: 1762869636675
+          modified: 1762869636675
+          sortKey: -1762869636675
+          description: ""
+        children:
+          - url: "{{ _.url }}:56358/api/person-service"
+            name: create person
+            meta:
+              id: req_651dcea1a34742a6af1e67014e5cef1e
+              created: 1762869696848
+              modified: 1762885486070
+              isPrivate: false
+              description: ""
+              sortKey: -1762869696848
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"name": "Carlos Vargas",
+                	"email": "carlosw.vargas@example.com",
+                	"phone": "+57 3001234567",
+                	"address": "Calle 123 #45-67, Bogotá",
+                	"user": {
+                		"username": "cvargas2",
+                		"password": "claveSegura2025",
+                		"role": "ROOT",
+                		"status": true,
+                		"createdAt": "2025-11-10T08:00:00Z",
+                		"updateAt": "2025-11-11T09:00:00Z"
+                	}
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:56358/api/person-service/1"
+            name: update person
+            meta:
+              id: req_b2eda0f1e5004c80a7623d9cc1d6a9a7
+              created: 1762869724876
+              modified: 1762885727169
+              isPrivate: false
+              description: ""
+              sortKey: -1762869724876
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |
+                {
+                  "name": "Carlos Vargas",
+                  "email": "carlos.vargas@example.com",
+                  "phone": "+57 3001234567",
+                  "address": "Calle 123 #45-67, Bogotá",
+                  "user": {
+                    "id": 1,
+                    "username": "carlosw.vargas@example.com",
+                    "password": "claveSegura2025",
+                    "role": "ROOT",
+                    "status": true,
+                    "createdAt": "2025-11-10T08:00:00Z",
+                    "updateAt": "2025-11-11T09:00:00Z"
+                  }
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:56358/api/person-service/2"
+            name: find by id
+            meta:
+              id: req_fce3c077dea24226ba17d15522138090
+              created: 1762869803631
+              modified: 1762885530015
+              isPrivate: false
+              description: ""
+              sortKey: -1762869803631
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:56358/api/person-service/email/carlos.vargas@example.com"
+            name: find by email
+            meta:
+              id: req_e56898c70c1a465a8109f4a515106104
+              created: 1762869895338
+              modified: 1762885545839
+              isPrivate: false
+              description: ""
+              sortKey: -1762869764253.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: product
+        meta:
+          id: fld_c520a29f23974d4b9a18c3d06b82d8b0
+          created: 1762894794331
+          modified: 1762894794331
+          sortKey: -1762894794331
+          description: ""
+        children:
+          - url: "{{ _.url }}:50845/api/product-service"
+            name: create product
+            meta:
+              id: req_29ccec1e1b424d88a9886a54a34b3161
+              created: 1762894797657
+              modified: 1762897071553
+              isPrivate: false
+              description: ""
+              sortKey: -1762894797657
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "productName": "Ejemplo de product2",
+                  "description": "Este es un producto de prueba",
+                  "stock": 100
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:50845/api/product-service/11"
+            name: updateproduct
+            meta:
+              id: req_790bc85016d445e4a0b68733f95a18b7
+              created: 1762897084925
+              modified: 1762897097059
+              isPrivate: false
+              description: ""
+              sortKey: -1762883563716
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "productName": "Ejemplo de product2",
+                  "description": "Este es un producto de prueba",
+                  "stock": 100
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:50845/api/product-service/productname/Ejemplo de product1"
+            name: find by productname
+            meta:
+              id: req_12c6542aa7904449baf3c2db8da5cebc
+              created: 1762897138084
+              modified: 1762897247930
+              isPrivate: false
+              description: ""
+              sortKey: -1762897138084
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:50845/api/product-service/10"
+            name: find by id
+            meta:
+              id: req_ad0b3ffe36404fcabbd8e78c25b4908d
+              created: 1762897168055
+              modified: 1762897250954
+              isPrivate: false
+              description: ""
+              sortKey: -1762895967870.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.url }}:55783/api/product-service/9"
+            name: delete by id
+            meta:
+              id: req_d2c2b525602244d3ae8bba5d281b7e4a
+              created: 1762897231641
+              modified: 1762897392194
+              isPrivate: false
+              description: ""
+              sortKey: -1762896552977.25
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.3.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1753193168303
+    modified: 1762789681172
+  cookies:
+    - key: JSESSIONID
+      value: 812C91CBB9226E50F271B04E99B41332
+      domain: localhost
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-07-22T14:06:53.176Z
+      lastAccessed: 2025-07-22T14:06:53.176Z
+      id: 128ce00b-0a1d-4be8-8776-8875b08247eb
+    - key: incap_ses_9129_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-14T21:39:23.828Z
+      lastAccessed: 2025-11-10T15:48:01.172Z
+      id: e7ffafb3-8cd4-4f04-ad66-6873e19e4ea2
+    - key: visid_incap_2965250
+      value: Afc4C2dOTjyb2zvLWRYxlwvD7mgAAAAAQUIPAAAAAABpYX7xa1bMbF2ZIBShLzmA
+      domain: apps.ambientesbc.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+      creation: 2025-10-14T21:39:23.831Z
+      lastAccessed: 2025-10-14T21:39:23.831Z
+      sameSite: none
+      id: c2748157-02b5-4fa1-8e5e-c206d0d391f6
+    - key: nlbi_2965250
+      value: SSM7TCpKKWXOTt42oPrtLQAAAACUHerjQUGoqsCUorzl6GFj
+      domain: apps.ambientesbc.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+      creation: 2025-10-14T21:39:23.832Z
+      lastAccessed: 2025-11-10T15:15:46.726Z
+      sameSite: none
+      id: 3d137885-d144-40b2-b9ae-299ab844829f
+    - key: incap_ses_1659_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-14T21:39:23.832Z
+      lastAccessed: 2025-11-07T16:56:19.943Z
+      id: 216131f6-66e8-46d3-b681-a1853d30e87f
+    - key: incap_ses_1816_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-14T22:09:04.116Z
+      lastAccessed: 2025-11-07T16:56:19.943Z
+      id: 6bcb2ad3-4f0f-4cdf-83ce-38df17d4878a
+    - key: incap_ses_1597_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-14T22:09:04.116Z
+      lastAccessed: 2025-10-16T13:48:46.453Z
+      id: c0104a11-8d13-4305-8c9c-095b0947edbb
+    - key: incap_ses_8224_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-14T22:09:04.116Z
+      lastAccessed: 2025-10-16T13:48:46.453Z
+      id: 72d8d316-5330-42e4-be7c-067dc183e545
+    - key: incap_ses_7241_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-14T22:09:04.116Z
+      lastAccessed: 2025-10-16T13:48:46.453Z
+      id: d8dfbcab-40f8-42a8-a5e1-fdedabf802db
+    - key: incap_ses_9029_2965250
+      value: tXt/ZwwK6VWaSoNpGXRNfTY7DmkAAAAA0icZ96GBx5Jfni3J8c6prQ==
+      domain: apps.ambientesbc.com
+      path: /
+      secure: true
+      hostOnly: false
+      creation: 2025-10-14T22:18:00.926Z
+      lastAccessed: 2025-11-07T18:32:24.096Z
+      sameSite: none
+      id: f2edea32-6311-4771-acab-3ec6ea7b9ba1
+    - key: incap_ses_1680_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-15T15:06:46.464Z
+      lastAccessed: 2025-11-07T16:56:19.944Z
+      id: 4be69c3e-3bac-4e7a-bb6d-ef3e7a5f5295
+    - key: incap_ses_387_2965250
+      value: a
+      maxAge: 0
+      domain: apps.ambientesbc.com
+      path: /
+      hostOnly: false
+      creation: 2025-10-16T13:51:49.140Z
+      lastAccessed: 2025-11-07T16:56:19.942Z
+      id: d4d0fa6b-f67c-4f68-9e80-e0c9061acb1a
+    - key: incap_ses_1814_2965250
+      value: prZfYgQZaWhglcE35p8sGS4JEmkAAAAAHUyEN88TbrZlmzKAaDlqkQ==
+      domain: apps.ambientesbc.com
+      path: /
+      secure: true
+      hostOnly: false
+      creation: 2025-11-10T15:15:46.726Z
+      lastAccessed: 2025-11-10T15:48:01.172Z
+      sameSite: none
+      id: c4d14779-df5b-40de-95a3-a514508ad235
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1753193168074
+    modified: 1761233593864
+    isPrivate: false
+  data:
+    url: http://localhost
+    port: "59702"
+    gateway: http://localhost:8091/gateway-service
