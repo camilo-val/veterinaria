@@ -7,40 +7,42 @@ spring:
 
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true                # 🔍 Activa resolución automática con Eureka
-          lower-case-service-id: false # Usa nombres tal como aparecen en Eureka (USER, PERSON, PET)
-      routes:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: false
+          routes:
 
-        # === USER SERVICE ===
-        - id: user-service
-          uri: lb://USER               # Usa el nombre registrado en Eureka
-          predicates:
-            - Path=/gateway-service/api/user-service/**
-          filters:
-            - StripPrefix=1             # Elimina "/gateway-service" → deja "/api/user-service"
+            # === USER SERVICE ===
+            - id: user-service
+              uri: lb://USER
+              predicates:
+                - Path=/gateway-service/api/user-service/**
+              filters:
+                - StripPrefix=1
 
-        # === PERSON SERVICE ===
-        - id: person-service
-          uri: lb://PERSON
-          predicates:
-            - Path=/gateway-service/api/person-service/**
-          filters:
-            - StripPrefix=1
+            # === PERSON SERVICE ===
+            - id: person-service
+              uri: lb://PERSON
+              predicates:
+                - Path=/gateway-service/api/person-service/**
+              filters:
+                - StripPrefix=1
 
-        # === PET SERVICE ===
-        - id: pet-service
-          uri: lb://PET
-          predicates:
-            - Path=/gateway-service/api/pet-service/**
-          filters:
-            - StripPrefix=1
+            # === PET SERVICE ===
+            - id: pet-service
+              uri: lb://PET
+              predicates:
+                - Path=/gateway-service/api/pet-service/**
+              filters:
+                - StripPrefix=1
 
 eureka:
   client:
-    register-with-eureka: true          # Se registra en Eureka
-    fetch-registry: true                # Obtiene listado de servicios
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
   instance:
@@ -49,5 +51,7 @@ eureka:
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG  # 🧩 Muestra en consola las rutas cargadas
-    reactor.netty.http.client: DEBUG          # (opcional) log del tráfico HTTP
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.loadbalancer: INFO
+    com.netflix.discovery: DEBUG
+    org.springframework.cloud.netflix.eureka: DEBUG
