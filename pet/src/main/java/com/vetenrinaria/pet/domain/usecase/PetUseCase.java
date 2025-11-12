@@ -1,0 +1,41 @@
+package com.vetenrinaria.pet.domain.usecase;
+
+import com.vetenrinaria.pet.domain.model.Pet;
+import com.vetenrinaria.pet.domain.model.exceptions.BusinessExceptions;
+import com.vetenrinaria.pet.domain.model.exceptions.BusinessMessageExceptions;
+import com.vetenrinaria.pet.domain.model.gateway.PetGateway;
+import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+import java.util.Optional;
+
+@RequiredArgsConstructor
+public class PetUseCase {
+
+    private final PetGateway petGateway;
+
+    public Optional<Pet> update(Long id,Pet pet) {
+        List<Pet> findByName = petGateway.findByName(pet.getName());
+        return petGateway.findById(id).flatMap( petBd -> {
+            if (findByName.stream().anyMatch(pet1 -> !pet1.getPersonId().equals(pet.getPersonId()))) {
+                throw new BusinessExceptions(BusinessMessageExceptions.PET_EXIST);
+            }
+            Pet updatePet = Pet.createPet(id, pet.getName(), pet.getAge(),  pet.getSpecie(), pet.getRace(), pet.getPersonId());
+            return this.petGateway.save(updatePet);
+        });
+    }
+
+    public Optional<Pet> save(Pet pet) {
+        List<Pet> findByName = petGateway
+                .findByName(pet.getName());
+        return this.petGateway.findByUserId(pet.getPersonId())
+                .stream().filter(petById -> findByName.stream().anyMatch(pet1 -> pet1.getName().equals(pet.getName())))
+                .findAny().flatMap(petExist -> {
+                    if (petExist.getPersonId() != null) {
+                        throw new BusinessExceptions(BusinessMessageExceptions.PET_EXIST);
+                    }
+                    Pet newPet = Pet.createPet(pet.getId(), pet.getName(), pet.getAge(),  pet.getSpecie(), pet.getRace(), pet.getPersonId());
+                    return petGateway.save(newPet);
+        });
+    }
+}
