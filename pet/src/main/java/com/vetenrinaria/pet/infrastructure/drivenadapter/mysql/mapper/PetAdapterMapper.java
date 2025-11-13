@@ -14,7 +14,14 @@ public interface PetAdapterMapper {
 
 
     // De dominio a entidad (JPA)
-    PetEntity toEntity(Pet pet);
+    default PetEntity toEntity(Pet pet){
+        return new PetEntity(pet.getId(),
+                pet.getName(),
+                pet.getAge(),
+                pet.getSpecie(),
+                pet.getRace(),
+                pet.getPersonId());
+    }
 
     /**
      * Fábrica para crear instancias de Pet desde una entidad, usando la lógica de dominio.

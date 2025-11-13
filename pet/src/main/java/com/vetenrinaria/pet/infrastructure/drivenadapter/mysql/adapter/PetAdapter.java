@@ -32,6 +32,9 @@ public class PetAdapter implements PetGateway {
     public Optional<Pet> save(Pet pet) {
         System.out.println("NEW PET aDAPTER: " + pet.toString());
         return Optional.ofNullable(this.petData.save(petAdapterMapper.toEntity(pet)))
+                .map((responsee -> {
+                    System.out.println("RESPONSE BD: " + responsee.toString());
+                return responsee;}))
                 .map(petAdapterMapper::toDomain);
     }
 
