@@ -1,0 +1,23 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: authentication
+
+user:
+  service-url: lb://USER
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+jwt:
+  secret: MiClaveSuperSecretaDe32BytesMinimo_ChangeMe_123456
+  issuer: veterinaria-auth
+  expirationSeconds: 3600
+  refreshExpirationSeconds: 604800
+

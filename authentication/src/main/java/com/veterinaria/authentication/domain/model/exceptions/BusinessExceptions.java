@@ -1,6 +1,5 @@
-package com.vetenrinaria.user.domain.model.exceptions;
+package com.veterinaria.authentication.domain.model.exceptions;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
