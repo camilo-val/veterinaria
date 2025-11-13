@@ -3,8 +3,8 @@ spring:
     name: user
   datasource:
     url: jdbc:mysql://mysql-barberia.alwaysdata.net:3306/barberia_veterinaria?useSSL=false&serverTimezone=UTC
-    username: barberia_aux
-    password: Ccva1007*
+    username: barberia_esteban
+    password: Esteban12*
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

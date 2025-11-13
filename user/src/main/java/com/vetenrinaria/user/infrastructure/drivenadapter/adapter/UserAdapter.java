@@ -3,12 +3,15 @@ package com.vetenrinaria.user.infrastructure.drivenadapter.adapter;
 import com.vetenrinaria.user.domain.model.User;
 import com.vetenrinaria.user.domain.model.gateway.UserGateway;
 import com.vetenrinaria.user.infrastructure.drivenadapter.data.UserRepository;
+import com.vetenrinaria.user.infrastructure.drivenadapter.entity.UserEntity;
 import com.vetenrinaria.user.infrastructure.drivenadapter.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Component
 @RequiredArgsConstructor
@@ -42,6 +45,14 @@ public class UserAdapter implements UserGateway {
     public Optional<User> findByUsername(String username) {
         return this.userRepository.findByUsername(username).map(userMapper::toDomain);
     }
+
+    @Override
+    public List<User> findAll() {
+        return StreamSupport.stream(userRepository.findAll().spliterator(), false)
+                .map(userMapper::toDomain)
+                .toList();
+    }
+
 
     @Transactional
     @Override

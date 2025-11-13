@@ -1,5 +1,7 @@
 package com.vetenrinaria.person.domain.usecase;
 
+import com.vetenrinaria.person.domain.model.exceptions.BusinessExceptions;
+import com.vetenrinaria.person.domain.model.exceptions.BusinessMessageExceptions;
 import com.vetenrinaria.person.domain.model.gateway.PersonGateway;
 import com.vetenrinaria.person.domain.model.gateway.UserGateway;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +17,8 @@ public class DeletePerson {
                     this.userGateway.deleteById(id);
                     return person;
                 })
-                .map(user -> {
-                    this.userGateway.deleteById(id);
-                    return user;
+                .or(() -> {
+                    throw  new BusinessExceptions(BusinessMessageExceptions.PERSON_NOT_EXIST);
                 });
     }
 }
