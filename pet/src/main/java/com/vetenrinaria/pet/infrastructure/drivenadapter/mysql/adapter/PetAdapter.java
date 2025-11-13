@@ -21,11 +21,16 @@ public class PetAdapter implements PetGateway {
     @Override
     public Optional<Pet> findById(Long id) {
         return this.petData.findById(id)
+                .map(r -> {
+                    System.out.println("RESPONSE BD: " + r.toString());
+                    return r;
+                })
                 .map(petAdapterMapper::toDomain);
     }
 
     @Override
     public Optional<Pet> save(Pet pet) {
+        System.out.println("NEW PET aDAPTER: " + pet.toString());
         return Optional.ofNullable(this.petData.save(petAdapterMapper.toEntity(pet)))
                 .map(petAdapterMapper::toDomain);
     }

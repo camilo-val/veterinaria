@@ -3,9 +3,11 @@ package com.vetenrinaria.pet.domain.model;
 import com.vetenrinaria.pet.domain.model.exceptions.BusinessExceptions;
 import com.vetenrinaria.pet.domain.model.exceptions.BusinessMessageExceptions;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.cglib.beans.BulkBeanException;
 
 @Getter
+@ToString
 public final class Pet {
     private final Long id;
     private final String name;

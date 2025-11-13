@@ -15,8 +15,7 @@ public class FindPet {
 
     public Optional<Pet> findById(Long id) {
         return this.petGateway.findById(id).or(() -> {
-            new BusinessExceptions(BusinessMessageExceptions.PET_NOT_EXIST);
-            return Optional.empty();
+            throw new BusinessExceptions(BusinessMessageExceptions.PET_NOT_EXIST);
         });
     }
 

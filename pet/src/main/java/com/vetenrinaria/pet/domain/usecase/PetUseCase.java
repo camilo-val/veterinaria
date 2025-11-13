@@ -26,6 +26,8 @@ public class PetUseCase {
     }
 
     public Optional<Pet> save(Pet pet) {
+        System.out.println("NEW PET 0: " + pet.toString());
+
         List<Pet> petsByName = petGateway.findByName(pet.getName());
         List<Pet> petsByPerson = petGateway.findByUserId(pet.getPersonId());
 
@@ -45,6 +47,7 @@ public class PetUseCase {
                 pet.getRace(),
                 pet.getPersonId()
         );
+        System.out.println("NEW PET: " + newPet.toString());
 
         return petGateway.save(newPet);
     }

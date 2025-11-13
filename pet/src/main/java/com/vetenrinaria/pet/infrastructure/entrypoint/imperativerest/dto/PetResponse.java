@@ -14,4 +14,5 @@ public class PetResponse {
     private Integer age;
     private String specie;
     private String race;
+    private Long personId;
 }

@@ -14,12 +14,13 @@ public class RouterRest {
     @Bean
     public RouterFunction<ServerResponse> router(Handler handler){
         return RouterFunctions.route(RequestPredicates.POST(BASE), handler::save)
-                .andRoute(RequestPredicates.DELETE(BASE + "{id}"), handler::delete)
-                .andRoute(RequestPredicates.PUT(BASE + "{id}"), handler::update)
-                .andRoute(RequestPredicates.GET(BASE + "{id}"), handler::findById)
+                .andRoute(RequestPredicates.DELETE(BASE + "/{id}"), handler::delete)
+                .andRoute(RequestPredicates.PUT(BASE + "/{id}"), handler::update)
+                .andRoute(RequestPredicates.GET(BASE + "/{id}"), handler::findById)
                 .andRoute(RequestPredicates.GET(BASE + "/personid/{personid}"), handler::findByPersonId)
                 .andRoute(RequestPredicates.GET(BASE), handler::findall)
-                .andRoute(RequestPredicates.GET(BASE + "/name/{name}"), handler::findByName);
+                .andRoute(RequestPredicates.GET(BASE + "/name/{name}"), handler::findByName)
+                .filter(webHandlerException);
 
     }
 }

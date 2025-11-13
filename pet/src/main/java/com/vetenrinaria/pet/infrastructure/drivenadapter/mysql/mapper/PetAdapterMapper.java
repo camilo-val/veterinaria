@@ -4,14 +4,24 @@ import com.vetenrinaria.pet.domain.model.Pet;
 import com.vetenrinaria.pet.infrastructure.drivenadapter.mysql.entity.PetEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.ObjectFactory;
+import org.mapstruct.MappingTarget;
 
+/**
+ * Mapper que convierte entre la entidad JPA (PetEntity) y el modelo de dominio (Pet).
+ */
 @Mapper(componentModel = "spring")
 public interface PetAdapterMapper {
-    Pet toDomain(PetEntity petEntity);
+
+
+    // De dominio a entidad (JPA)
     PetEntity toEntity(Pet pet);
 
+    /**
+     * Fábrica para crear instancias de Pet desde una entidad, usando la lógica de dominio.
+     */
     @ObjectFactory
-    default Pet create(PetEntity entity) {
+    default Pet toDomain(PetEntity entity) {
+        System.out.println("MAPER PET: " + entity.toString());
         return Pet.createPet(
                 entity.getId(),
                 entity.getName(),
