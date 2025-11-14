@@ -27,7 +27,7 @@ spring:
             - id: person-service
               uri: lb://PERSON
               predicates:
-                - Path=/gateway-service/api/person-service/**
+                - Path=/gateway-service/api/person-service/**, /gateway-service/public/api/person-service/**
               filters:
                 - StripPrefix=1
 

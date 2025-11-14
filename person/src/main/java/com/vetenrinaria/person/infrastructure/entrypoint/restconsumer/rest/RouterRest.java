@@ -17,7 +17,8 @@ public class RouterRest {
 
     @Bean
     public RouterFunction<ServerResponse> ruoter(Handler handler){
-        return RouterFunctions.route(RequestPredicates.POST(this.BASE),handler::create)
+        return RouterFunctions.route(RequestPredicates.POST(this.BASE),handler::create).
+        andRoute(RequestPredicates.POST("/public" + this.BASE),handler::create)
                 .andRoute(RequestPredicates.GET(BASE),handler::findAll)
                 .andRoute(RequestPredicates.GET(BASE+"/{id}"),handler::findById)
                 .andRoute(RequestPredicates.GET(BASE+"/email/{email}"),handler::findByEmail)
