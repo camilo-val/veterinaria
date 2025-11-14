@@ -33,7 +33,7 @@ public class JwtAuthenticationFilter implements WebFilter {
 
         String path = exchange.getRequest().getURI().getPath();
 
-        if (path.startsWith("/public")
+        if (path.endsWith("/public")
                 || path.startsWith("/api/authentication")
         ) {
             return chain.filter(exchange);
