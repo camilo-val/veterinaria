@@ -9,7 +9,7 @@ public interface UserMapperAdapter {
 
 
     default User toDomain(UserResponse userResponse){
-        return new User(userResponse.getUsername(), userResponse.getPassword(), null, null);
+        return new User(userResponse.getUsername(), userResponse.getPassword(), userResponse.getRole(), userResponse.getStatus());
 
     }
 

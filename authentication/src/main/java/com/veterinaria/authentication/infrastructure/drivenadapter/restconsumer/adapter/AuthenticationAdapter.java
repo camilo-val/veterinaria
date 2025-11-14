@@ -17,11 +17,13 @@ public class AuthenticationAdapter implements UserGateway {
 
     @Override
     public Mono<User> login(User user) {
-        return this.builder.build()
+
+        return builder.build()
                 .get()
-                .uri("/{username}", user.getUsername())
+                .uri("/api/user-service/username/{username}", user.getUsername())
                 .retrieve()
                 .bodyToMono(UserResponse.class)
+                .doOnNext(r -> System.out.println("ENTREE ADAPTER: " + r.toString()))
                 .map(userMapperAdapter::toDomain);
     }
 

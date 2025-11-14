@@ -15,7 +15,6 @@ import java.time.OffsetDateTime;
 public class UserResponse {
     private Long id;
     private String username;
-    @JsonIgnore
     private String password;
     private Role role;
     private Boolean status;

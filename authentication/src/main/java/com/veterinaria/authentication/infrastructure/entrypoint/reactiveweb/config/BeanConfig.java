@@ -1,8 +1,15 @@
 package com.veterinaria.authentication.infrastructure.entrypoint.reactiveweb.config;
 
+import com.veterinaria.authentication.domain.model.gateway.JwtGateway;
+import com.veterinaria.authentication.domain.model.gateway.PasswordEncoderGateway;
+import com.veterinaria.authentication.domain.model.gateway.UserGateway;
+import com.veterinaria.authentication.domain.usecase.AuthenticationUseCase;
+import com.veterinaria.authentication.infrastructure.drivenadapter.restconsumer.adapter.AuthenticationAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.nio.charset.StandardCharsets;
 import java.security.KeyFactory;
@@ -14,6 +21,16 @@ import java.util.Base64;
 
 @Configuration
 public class BeanConfig {
+
+    @Bean
+    public AuthenticationUseCase authenticationUseCase(UserGateway userGateway, JwtGateway jwtGateway,  PasswordEncoderGateway passwordEncoder) {
+        return new AuthenticationUseCase(userGateway, jwtGateway, passwordEncoder);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Bean
     public PrivateKey jwtPrivateKey() throws Exception {

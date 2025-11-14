@@ -6,6 +6,7 @@ import com.vetenrinaria.products.domain.model.exceptions.BusinessMessageExceptio
 import com.vetenrinaria.products.domain.model.gateway.ProductGateway;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -27,4 +28,7 @@ public class FindProduct {
 
     }
 
+    public List<Product> findAll() {
+        return this.productGateway.findAll();
+    }
 }

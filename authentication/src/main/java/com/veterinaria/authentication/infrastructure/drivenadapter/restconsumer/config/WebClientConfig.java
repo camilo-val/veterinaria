@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class WebClientConfig {
-    @Value("{user.service-url}")
+    @Value("${user.service-url}")
     private String url;
 
     @LoadBalanced

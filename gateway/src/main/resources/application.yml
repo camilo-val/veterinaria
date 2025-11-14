@@ -39,6 +39,13 @@ spring:
               filters:
                 - StripPrefix=1
             # === PET SERVICE ===
+            - id: product-service
+              uri: lb://PRODUCTS
+              predicates:
+                - Path=/gateway-service/api/product-service/**
+              filters:
+               - StripPrefix=1
+            # === AUTH SERVICE ===
             - id: authentication-service
               uri: lb://AUTHENTICATION
               predicates:

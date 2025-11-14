@@ -7,7 +7,9 @@ import com.vetenrinaria.products.infrastructure.mapper.ProductAdapterMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @RequiredArgsConstructor
 @Component
@@ -38,6 +40,12 @@ public class ProductAdapter implements ProductGateway {
                     return r;
                 })
                 .map(productAdapterMapper::toDomain);
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return StreamSupport.stream(productRepository.findAll().spliterator(), false)
+                .map(productAdapterMapper::toDomain).toList();
     }
 
     @Override

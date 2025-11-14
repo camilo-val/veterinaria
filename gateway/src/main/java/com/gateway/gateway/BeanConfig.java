@@ -1,9 +1,10 @@
 package com.gateway.gateway;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyFactory;
@@ -16,7 +17,8 @@ public class BeanConfig {
 
     @Bean
     public PublicKey jwtPublicKey() throws Exception {
-        String publicKeyPem = Files.readString(Paths.get("src/main/resources/public_key.pem"));
+        ClassPathResource resource = new ClassPathResource("public_key.pem");
+        String publicKeyPem = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
         publicKeyPem = publicKeyPem
                 .replace("-----BEGIN PUBLIC KEY-----", "")
                 .replace("-----END PUBLIC KEY-----", "")

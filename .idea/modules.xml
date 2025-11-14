@@ -2,6 +2,33 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/authentication.iml" filepath="$PROJECT_DIR$/.idea/modules/authentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/authentication.main.iml" filepath="$PROJECT_DIR$/.idea/modules/authentication.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/authentication.test.iml" filepath="$PROJECT_DIR$/.idea/modules/authentication.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/booking.iml" filepath="$PROJECT_DIR$/.idea/modules/booking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/booking.main.iml" filepath="$PROJECT_DIR$/.idea/modules/booking.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/booking.test.iml" filepath="$PROJECT_DIR$/.idea/modules/booking.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-server.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/discovery-server.test.iml" filepath="$PROJECT_DIR$/.idea/modules/discovery-server.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.test.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment.iml" filepath="$PROJECT_DIR$/.idea/modules/payment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment.main.iml" filepath="$PROJECT_DIR$/.idea/modules/payment.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/payment.test.iml" filepath="$PROJECT_DIR$/.idea/modules/payment.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/person.iml" filepath="$PROJECT_DIR$/.idea/modules/person.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/person.main.iml" filepath="$PROJECT_DIR$/.idea/modules/person.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/person.test.iml" filepath="$PROJECT_DIR$/.idea/modules/person.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pet.iml" filepath="$PROJECT_DIR$/.idea/modules/pet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pet.main.iml" filepath="$PROJECT_DIR$/.idea/modules/pet.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pet.test.iml" filepath="$PROJECT_DIR$/.idea/modules/pet.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/products.iml" filepath="$PROJECT_DIR$/.idea/modules/products.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/products.main.iml" filepath="$PROJECT_DIR$/.idea/modules/products.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/products.test.iml" filepath="$PROJECT_DIR$/.idea/modules/products.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user.iml" filepath="$PROJECT_DIR$/.idea/modules/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user.main.iml" filepath="$PROJECT_DIR$/.idea/modules/user.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/user.test.iml" filepath="$PROJECT_DIR$/.idea/modules/user.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/veterinaria.iml" filepath="$PROJECT_DIR$/.idea/veterinaria.iml" />
     </modules>
   </component>

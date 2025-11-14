@@ -4,10 +4,8 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/authentication" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/authentication" />
@@ -15,12 +13,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/booking" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/booking" />
@@ -28,12 +22,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/discovery-server" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/discovery-server" />
@@ -41,12 +31,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/gateway" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/gateway" />
@@ -54,12 +40,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/payment" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/payment" />
@@ -67,12 +49,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/person" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/person" />
@@ -80,12 +58,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/pet" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/pet" />
@@ -93,12 +67,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/products" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/products" />
@@ -106,12 +76,8 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="delegatedBuild" value="true" />
-        <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/user" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle-8.14.3" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/8.14.3/libexec" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/user" />

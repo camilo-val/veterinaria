@@ -4,6 +4,7 @@ import com.vetenrinaria.products.domain.usecase.DeleteProduct;
 import com.vetenrinaria.products.domain.usecase.FindProduct;
 import com.vetenrinaria.products.domain.usecase.ProductUseCase;
 import com.vetenrinaria.products.infrastructure.entrypoint.dto.ProductRequest;
+import com.vetenrinaria.products.infrastructure.entrypoint.dto.ProductResponse;
 import com.vetenrinaria.products.infrastructure.entrypoint.mapper.ProductEntryPointMapper;
 import jakarta.servlet.ServletException;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -52,6 +54,12 @@ public class Handler {
                 .map(productEntryPointMapper::toResponse)
                 .map(ServerResponse.ok()::body)
                 .get();
+    }
+
+    public ServerResponse findAll(ServerRequest request){
+        List<ProductResponse> response = this.findProduct
+                .findAll().stream().map(productEntryPointMapper::toResponse).toList();
+        return ServerResponse.ok().body(response);
     }
 
     public ServerResponse deleteById(ServerRequest request){

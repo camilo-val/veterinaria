@@ -16,7 +16,6 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 
 jwt:
-  secret: MiClaveSuperSecretaDe32BytesMinimo_ChangeMe_123456
   issuer: veterinaria-auth
   expirationSeconds: 3600
   refreshExpirationSeconds: 604800

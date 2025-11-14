@@ -11,7 +11,7 @@ import org.mapstruct.ObjectFactory;
 public interface AuthenticationMapper {
     @ObjectFactory
     default User toDomain(AuthenticationRequest authenticationRequest){
-        return new User(authenticationRequest.getUsername(), authenticationRequest.getUsername(),null,null);
+        return new User(authenticationRequest.getUsername(), authenticationRequest.getPassword(),null,null);
     }
 
     @ObjectFactory

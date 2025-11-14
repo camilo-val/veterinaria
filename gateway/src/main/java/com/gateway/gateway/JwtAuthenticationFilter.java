@@ -22,23 +22,31 @@ import java.util.List;
 @Component
 public class JwtAuthenticationFilter implements WebFilter {
 
-    private final PublicKey publicKey;
+    private final PublicKey jwtPublicKey;
 
     public JwtAuthenticationFilter(PublicKey publicKey) {
-        this.publicKey = publicKey;
+        this.jwtPublicKey = publicKey;
     }
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+
+        String path = exchange.getRequest().getURI().getPath();
+
+        if (path.startsWith("/public")
+                || path.startsWith("/api/authentication")
+        ) {
+            return chain.filter(exchange);
+        }
+
         String authHeader = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
 
             try {
-                // ✅ Validación con JJWT 0.13.0
                 Claims claims = Jwts.parser()
-                        .verifyWith(publicKey)
+                        .verifyWith(jwtPublicKey)
                         .build()
                         .parseSignedClaims(token)
                         .getPayload();
@@ -46,22 +54,15 @@ public class JwtAuthenticationFilter implements WebFilter {
                 String username = claims.getSubject();
                 String role = claims.get("roles", List.class).get(0).toString();
 
-                // Crear Authentication reactivo
                 Authentication authentication = new AbstractAuthenticationToken(
                         List.of(new SimpleGrantedAuthority(role))) {
                     @Override
-                    public Object getCredentials() {
-                        return null;
-                    }
-
+                    public Object getCredentials() { return null; }
                     @Override
-                    public Object getPrincipal() {
-                        return username;
-                    }
+                    public Object getPrincipal() { return username; }
                 };
                 authentication.setAuthenticated(true);
 
-                // Insertar en el contexto de seguridad reactivo
                 SecurityContext context = new SecurityContextImpl(authentication);
 
                 return chain.filter(exchange)

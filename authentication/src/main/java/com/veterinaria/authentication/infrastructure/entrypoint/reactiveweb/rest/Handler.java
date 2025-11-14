@@ -13,13 +13,13 @@ import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor
-public class Handler {
+public class  Handler {
     private final AuthenticationUseCase authenticationUseCase;
     private final AuthenticationMapper authenticationMapper;
     public Mono<ServerResponse> login(ServerRequest request){
         return request.bodyToMono(AuthenticationRequest.class)
                 .map(authenticationMapper::toDomain)
-                .flatMap(authenticationUseCase::authentication)
+                .flatMap(authenticationUseCase::authenticate)
                 .map(authenticationMapper::toResponse)
                 .flatMap(ServerResponse.ok()::bodyValue)
                 .switchIfEmpty(Mono.error( new TechnicalExceptions(TechnicalMessageExceptions.BAD_REQUEST)));

@@ -12,12 +12,10 @@ import java.util.Base64;
 
 public class PemUtils {
 
-    // Leer archivo PEM y devolver su contenido como String
     public static String readPemFile(String path) throws IOException {
         return new String(Files.readAllBytes(Paths.get(path)));
     }
 
-    // Convertir contenido PEM a PrivateKey (PKCS#8)
     public static PrivateKey loadPrivateKeyFromPem(String pemContent) throws Exception {
         String privateKeyPEM = pemContent
                 .replace("-----BEGIN PRIVATE KEY-----", "")
@@ -30,7 +28,6 @@ public class PemUtils {
         return keyFactory.generatePrivate(keySpec);
     }
 
-    // Convertir contenido PEM a PublicKey (X.509)
     public static PublicKey loadPublicKeyFromPem(String pemContent) throws Exception {
         String publicKeyPEM = pemContent
                 .replace("-----BEGIN PUBLIC KEY-----", "")
