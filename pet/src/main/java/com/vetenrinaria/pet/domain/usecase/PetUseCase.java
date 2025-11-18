@@ -1,9 +1,11 @@
 package com.vetenrinaria.pet.domain.usecase;
 
 import com.vetenrinaria.pet.domain.model.Pet;
+import com.vetenrinaria.pet.domain.model.PetWithPerson;
 import com.vetenrinaria.pet.domain.model.exceptions.BusinessExceptions;
 import com.vetenrinaria.pet.domain.model.exceptions.BusinessMessageExceptions;
 import com.vetenrinaria.pet.domain.model.gateway.PetGateway;
+import com.vetenrinaria.pet.domain.model.person.gateway.PersonGateway;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -13,19 +15,22 @@ import java.util.Optional;
 public class PetUseCase {
 
     private final PetGateway petGateway;
+    private final PersonGateway personGateway;
 
-    public Optional<Pet> update(Long id,Pet pet) {
+    public Optional<PetWithPerson> update(Long id, Pet pet) {
         List<Pet> findByName = petGateway.findByName(pet.getName());
         return petGateway.findById(id).flatMap( petBd -> {
-            if (findByName.stream().anyMatch(pet1 -> !pet1.getPersonId().equals(pet.getPersonId()))) {
+            if (findByName.stream().anyMatch(pet2 -> !pet2.getPersonId().equals(pet.getPersonId()))) {
                 throw new BusinessExceptions(BusinessMessageExceptions.PET_EXIST);
             }
-            Pet updatePet = Pet.createPet(id, pet.getName(), pet.getAge(),  pet.getSpecie(), pet.getRace(), pet.getPersonId());
-            return this.petGateway.save(updatePet);
+            return this.personGateway.findByID(pet.getPersonId()).map(pet1 -> {
+                Pet updatePet = Pet.createPet(id, pet.getName(), pet.getAge(),  pet.getSpecie(), pet.getRace(), pet.getPersonId());
+                return this.petGateway.save(updatePet).map(response -> new PetWithPerson(pet,pet1));
+            }).get();
         });
     }
 
-    public Optional<Pet> save(Pet pet) {
+    public Optional<PetWithPerson> save(Pet pet) {
         System.out.println("NEW PET 0: " + pet.toString());
 
         List<Pet> petsByName = petGateway.findByName(pet.getName());
@@ -49,7 +54,8 @@ public class PetUseCase {
         );
         System.out.println("NEW PET: " + newPet.toString());
 
-        return petGateway.save(newPet);
+        return petGateway.save(newPet).flatMap(person ->
+                this.personGateway.findByID(person.getPersonId()).map(resposne -> new PetWithPerson(pet,resposne)));
     }
 
 }

@@ -1,5 +1,6 @@
 package com.vetenrinaria.pet.infrastructure.entrypoint.imperativerest.dto;
 
+import com.vetenrinaria.pet.infrastructure.drivenadapter.restconsumer.dto.PersonResponse;
 import lombok.*;
 
 @Getter
@@ -14,5 +15,5 @@ public class PetResponse {
     private Integer age;
     private String specie;
     private String race;
-    private Long personId;
+    private PersonResponse person;
 }

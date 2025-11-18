@@ -11,5 +11,10 @@ public class BookingWithData {
     private final Product product;
     private final Booking booking;
 
-
+    public BookingWithData(PersonWithUser client, PersonWithUser employee, Product product, Booking booking) {
+        this.client = client;
+        this.employee = employee;
+        this.product = product;
+        this.booking = booking;
+    }
 }

@@ -22,8 +22,8 @@ public class RouterRest {
                 .andRoute(RequestPredicates.DELETE(BASE + "/{id}"), handler::deleteById)
                 .andRoute(RequestPredicates.GET(BASE + "/{id}"),handler::findById)
                 .andRoute(RequestPredicates.GET(BASE),handler::findAll)
-                .andRoute(RequestPredicates.GET(BASE + "/productname/{productname}"),handler::findByProductName);
-                //.filter(webHandlerException);
+                .andRoute(RequestPredicates.GET(BASE + "/productname/{productname}"),handler::findByProductName)
+                .filter(webHandlerException);
 
     }
 }

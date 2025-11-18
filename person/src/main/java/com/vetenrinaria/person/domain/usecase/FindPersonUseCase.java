@@ -6,6 +6,7 @@ import com.vetenrinaria.person.domain.model.gateway.PersonGateway;
 import com.vetenrinaria.person.domain.model.gateway.UserGateway;
 import com.vetenrinaria.person.domain.model.person.Person;
 import com.vetenrinaria.person.domain.model.person.PersonWithUser;
+import com.vetenrinaria.person.domain.model.user.User;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -28,19 +29,16 @@ public class FindPersonUseCase {
     public Optional<PersonWithUser> findById(Long id) {
         return this.personGateway.findById(id)
                 .flatMap(person -> userGateway.findById(person.getUserId())
-                        .map(user -> {
-                            System.out.println("Find person: " + person.toString());
-                            System.out.println("Find user: " + user.toString());
-                                return  new PersonWithUser(person, user);
-                            }
-                        ))
+                        .map(user -> new PersonWithUser(person, user))
                 .or(() -> {
                     throw new  BusinessExceptions(BusinessMessageExceptions.PERSON_NOT_EXIST);
-                });
+                }));
     }
     public List<PersonWithUser> findAll() {
-        return this.personGateway.findAll().stream().map(person -> new PersonWithUser(person
-                , this.userGateway.findById(person.getUserId()).get()))
+        List<User> users = this.userGateway.findAll();
+        return this.personGateway.findAll().stream().map(person
+                -> new PersonWithUser(person
+                , users.stream().filter(u -> u.getId().equals(person.getUserId())).findFirst().get()))
                 .toList();
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -37,6 +38,10 @@ public class Handler {
         PetRequest body = request.body(PetRequest.class);
         return this.petUseCase.update(id, petMapperRest.toDomain(body))
                 .map(petMapperRest::toResponse)
+                .map(r -> {
+                    System.out.println("entre handler"+ new Date());
+                    return r;
+                })
                 .map(ServerResponse.created(request.uri())::body)
                 .get();
     }

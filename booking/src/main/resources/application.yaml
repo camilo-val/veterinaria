@@ -1,3 +1,14 @@
 spring:
   application:
     name: booking
+
+external-api:
+  person:
+    # noinspection SpringBootApplicationYaml
+    service-url: lb://PERSON
+  product:
+    # noinspection SpringBootApplicationYaml
+    service-url: lb://PRODUCT
+
+server:
+  port: 0

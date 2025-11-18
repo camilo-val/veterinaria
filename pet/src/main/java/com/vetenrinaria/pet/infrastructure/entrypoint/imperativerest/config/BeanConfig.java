@@ -1,6 +1,7 @@
 package com.vetenrinaria.pet.infrastructure.entrypoint.imperativerest.config;
 
 import com.vetenrinaria.pet.domain.model.gateway.PetGateway;
+import com.vetenrinaria.pet.domain.model.person.gateway.PersonGateway;
 import com.vetenrinaria.pet.domain.usecase.DeletePet;
 import com.vetenrinaria.pet.domain.usecase.FindPet;
 import com.vetenrinaria.pet.domain.usecase.PetUseCase;
@@ -16,12 +17,12 @@ public class BeanConfig {
     }
 
     @Bean
-    public FindPet FindPet(PetGateway petGateway) {
-        return new FindPet(petGateway);
+    public FindPet FindPet(PetGateway petGateway, PersonGateway personGateway) {
+        return new FindPet(petGateway, personGateway);
     }
 
     @Bean
-    public PetUseCase PetUseCase(PetGateway petGateway) {
-        return new PetUseCase(petGateway);
+    public PetUseCase PetUseCase(PetGateway petGateway,PersonGateway personGateway) {
+        return new PetUseCase(petGateway,personGateway);
     }
 }

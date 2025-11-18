@@ -9,8 +9,8 @@ public interface BookingGateway {
     Optional<Booking> findById(Long id);
     Optional<Booking> saveForClient(Booking booking);
     Optional<Booking> saveForEmployee(Booking booking);
-    List<Booking> findByClientId(Long clientID);
-    List<Booking> findByEmployeeId(Long employeeID);
-    List<Booking> findByProductId(Long employeeID);
+    List<Booking> findByClientId(Long clientId);
+    List<Booking> findByEmployeeId(Long employeeId);
+    List<Booking> findByProductId(Long productId);
     List<Booking> findAll();
 }

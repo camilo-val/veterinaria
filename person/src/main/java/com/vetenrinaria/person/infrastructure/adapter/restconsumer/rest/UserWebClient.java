@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -81,6 +83,21 @@ public class UserWebClient implements UserGateway {
                 .bodyToMono(UserResponse.class)
                 .map(userDtoMapper::toDomain)
                 .blockOptional();
+    }
+
+    @Override
+    public List<User> findAll() {
+
+        return this.restClient
+                .build()
+                .get()
+                .uri(path)
+                .retrieve()
+                .bodyToFlux(UserResponse.class)     // 1. Llega como flujo de UserResponse
+                .map(userDtoMapper::toDomain)       // 2. Mapea 1 a 1 → User
+                .doOnNext(u -> System.out.println("WEBCLIENT: " + u))  // debug opcional
+                .collectList()                       // 3. Junta todo a List<User>
+                .block();                            // 4. Devuelve List<User>
     }
 
     @Override
