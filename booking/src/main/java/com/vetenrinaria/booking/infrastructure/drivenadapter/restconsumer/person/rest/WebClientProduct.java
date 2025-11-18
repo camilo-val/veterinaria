@@ -6,10 +6,13 @@ import com.vetenrinaria.booking.infrastructure.drivenadapter.restconsumer.person
 import com.vetenrinaria.booking.infrastructure.drivenadapter.restconsumer.person.mapper.ProductMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.List;
 import java.util.Optional;
 
+@Component
 @RequiredArgsConstructor
 public class WebClientProduct implements ProductGateway {
     @Value("${external-api.product.service-url}")
@@ -21,11 +24,24 @@ public class WebClientProduct implements ProductGateway {
         return this.webClient.baseUrl(url)
                 .build()
                 .get()
-                .uri("/api/person.service/{id}", id)
+                .uri("/api/product-service/{id}", id)
                 .retrieve()
                 .bodyToMono(ProductResponse.class)
                 .map(productMapper::toDomain)
                 .blockOptional();
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return this.webClient.baseUrl(url)
+                .build()
+                .get()
+                .uri("/api/product-service")
+                .retrieve()
+                .bodyToFlux(ProductResponse.class)
+                .map(productMapper::toDomain)
+                .collectList()
+                .block();
     }
 
     @Override

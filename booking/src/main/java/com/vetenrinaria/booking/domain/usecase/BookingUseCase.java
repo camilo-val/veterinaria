@@ -21,7 +21,7 @@ public class BookingUseCase {
     private final ProductGateway productGateway;
 
     public Optional<BookingWithData> createByClient(Booking booking) {
-        return this.productGateway.findByID(booking.getProductId()).filter(Product::getIsService)
+        return this.productGateway.findByID(booking.getProductId())//.filter(Product::getIsService)
                 .map(productExist -> this.personGateway.findByID(booking.getEmployeeId())
                 .map(employeeBd -> {
                     Booking newBooking = Booking.createBooking(booking.getId(),

@@ -1,6 +1,20 @@
 spring:
   application:
     name: booking
+  datasource:
+    url: jdbc:mysql://mysql-barberia.alwaysdata.net:3306/barberia_veterinaria?useSSL=false&serverTimezone=UTC
+    username: barberia_esteban
+    password: Esteban12*
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
 
 external-api:
   person:
@@ -8,7 +22,16 @@ external-api:
     service-url: lb://PERSON
   product:
     # noinspection SpringBootApplicationYaml
-    service-url: lb://PRODUCT
+    service-url: lb://PRODUCTS
 
 server:
   port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: false   # no usar IP
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.uuid}

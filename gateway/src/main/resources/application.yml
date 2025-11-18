@@ -52,7 +52,13 @@ spring:
                 - Path=/gateway-service/api/authentication-service/**
               filters:
                 - StripPrefix=1
-
+            # === BOOKING SERVICE ===
+            - id: booking-service
+              uri: lb://BOOKING
+              predicates:
+                - Path=/gateway-service/api/booking-service/**
+              filters:
+                - StripPrefix=1
 eureka:
   client:
     register-with-eureka: true
@@ -69,6 +75,3 @@ logging:
     org.springframework.cloud.loadbalancer: INFO
     com.netflix.discovery: DEBUG
     org.springframework.cloud.netflix.eureka: DEBUG
-
-jwt:
-  publicKeyPem: -----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwZp7u4tXzFhYkKqjFz1pkz7hZkz9ZQhQn0p6jZQyQh7ZkXz9Qh7Zkz9ZQhQn0p6jZQyQh7ZkXz9Qh7Zkz9ZQhQn0p6jZQyQh7ZkXz9Qh7Zkz9ZQhQn0p6jZQyQh7ZkXz9Qh7Zkz9ZQhQn0p6jZQyQh7ZkXz9Qh7Zkz9ZQhQn0p6jZQyQh7ZkXz9Qh7Zkz9ZQIDAQAB-----END PUBLIC KEY-----

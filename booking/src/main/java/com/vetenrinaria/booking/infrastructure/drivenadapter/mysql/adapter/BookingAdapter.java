@@ -5,11 +5,13 @@ import com.vetenrinaria.booking.domain.model.booking.gateway.BookingGateway;
 import com.vetenrinaria.booking.infrastructure.drivenadapter.mysql.data.BookingData;
 import com.vetenrinaria.booking.infrastructure.drivenadapter.mysql.mapper.BookingMapperAdapter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
+@Component
 @RequiredArgsConstructor
 public class BookingAdapter implements BookingGateway {
     private final BookingData  bookingData;
