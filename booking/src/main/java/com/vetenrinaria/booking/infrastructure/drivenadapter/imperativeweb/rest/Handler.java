@@ -61,9 +61,17 @@ public class Handler {
     }
 
 
-    public ServerResponse create(ServerRequest request) throws ServletException, IOException {
+    public ServerResponse createByClient(ServerRequest request) throws ServletException, IOException {
         BookingRequest bodyRequest =  request.body(BookingRequest.class);
         return this.bookingUseCase.createByClient(bookingMapper.toDomain(bodyRequest))
+                .map(bookingMapper::toResponse)
+                .map(ServerResponse.created(request.uri())::body).get();
+
+    }
+
+    public ServerResponse createByEmployee(ServerRequest request) throws ServletException, IOException {
+        BookingRequest bodyRequest =  request.body(BookingRequest.class);
+        return this.bookingUseCase.createByEmployee(bookingMapper.toDomain(bodyRequest))
                 .map(bookingMapper::toResponse)
                 .map(ServerResponse.created(request.uri())::body).get();
 

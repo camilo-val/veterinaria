@@ -14,7 +14,8 @@ public class RouterRest {
 
     @Bean
     public RouterFunction<ServerResponse> route(Handler handler){
-        return RouterFunctions.route(RequestPredicates.POST(BASE), handler::create)
+        return RouterFunctions.route(RequestPredicates.POST(BASE + "/create-client"), handler::createByClient)
+                .andRoute(RequestPredicates.POST(BASE + "/create-employee"), handler::createByClient)
                 .andRoute(RequestPredicates.GET(BASE),handler::findAll)
                 .andRoute(RequestPredicates.GET(BASE + "/{id}"), handler::findById)
                 .andRoute(RequestPredicates.GET(BASE + "/client/{clientid}"), handler::findByClientId)
