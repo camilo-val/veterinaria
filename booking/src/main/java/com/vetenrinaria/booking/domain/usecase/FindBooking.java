@@ -38,10 +38,10 @@ public class FindBooking {
         return this.bookingGateway.findByClientId(clientId).stream()
                 .map(booking -> employees.stream()
                         .filter(employeeBd -> (employeeBd.getPerson().getId().equals(booking.getEmployeeId()))
-                                && !employeeBd.getUser().getRole().equals("CLIENT")).findFirst()
+                                && (employeeBd.getUser().getRole().equals("ROOT")) || (employeeBd.getUser().getRole().equals("CLIENT"))).findFirst()
                         .flatMap(employee ->
                                 products.stream()
-                                .filter(productBd -> productBd.getId().equals(booking.getProductId())).findFirst()
+                                        .filter(productBd -> productBd.getId().equals(booking.getProductId())).findFirst()
                                         .map(product -> new BookingWithData(client, employee, product, booking))).get()).toList();
     }
 
